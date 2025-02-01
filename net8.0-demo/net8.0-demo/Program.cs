@@ -1,6 +1,8 @@
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World! bitch");
+app.UseHttpsRedirection();
+
+app.MapGet("/", () => "Hello World! monkey");
 
 app.Run();
