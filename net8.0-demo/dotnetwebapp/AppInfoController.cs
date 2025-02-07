@@ -24,9 +24,14 @@ public class AppInfoController : Controller
         var configSorted =
             config
                 .AsEnumerable()
-                .OrderBy(e => e.Key);
+                .OrderBy(e => e.Key)
+                .Select(e =>
+                {
+                    string? keyNew = new string(e.Key).Replace(":", "__");
+                    return new { Key = keyNew, e.Value };
+                })
+                .ToList();
 
         return Ok(configSorted);
-        
     }
 }
